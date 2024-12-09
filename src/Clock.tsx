@@ -10,14 +10,19 @@ interface ClockProps {
 export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: ClockProps){
     if(reciaveHours < 0)
         reciaveHours = 0;
-    if(reciaveMinutes < 0)
-        reciaveMinutes = 0;
-    else if (reciaveMinutes > 59)
-        reciaveMinutes = 59
     if(reciaveSeconds < 0)
         reciaveSeconds = 0;
-    else if (reciaveSeconds > 59)
-        reciaveSeconds = 59
+    if(reciaveMinutes < 0)
+        reciaveMinutes = 0;
+    
+    if (reciaveSeconds > 59){
+        reciaveMinutes+= Math.floor(reciaveSeconds / 60)
+        reciaveSeconds = reciaveSeconds % 60
+    }
+    if (reciaveMinutes > 59){
+        reciaveHours+= Math.floor(reciaveMinutes / 60)
+        reciaveMinutes = reciaveMinutes % 60
+    }
 
     const [hours, setHours] = useState(reciaveHours);
     const [minutes, setMinutes] = useState(reciaveMinutes);
