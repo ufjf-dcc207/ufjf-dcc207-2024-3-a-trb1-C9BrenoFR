@@ -16,7 +16,7 @@ export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: Cl
     useEffect(() => {
         let interval;
         if(isRunning){
-            interval = setInterval(() => {
+            setInterval(() => {
                 if(seconds > 0){
                     setSeconds((seconds) => seconds - 1);
                 }else if(minutes > 0){
@@ -27,10 +27,17 @@ export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: Cl
                     setMinutes(59);
                     setSeconds(59);
                 }
-            }, 100);
+            }, 1000);
         }
         return () => clearInterval(interval);
     }, [seconds, minutes, hours, isRunning])
+
+    function startTimer() {
+        if(hours !== 0 || minutes !== 0 || seconds !== 0){
+            setIsRunning(true);
+            console.log(isRunning)
+        }
+    }
 
     return (
         <div className="clock">
@@ -42,7 +49,7 @@ export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: Cl
             <button className="actions">
                 {isRunning ? 
                 (<span className="material-symbols-outlined">pause</span>) : 
-                (<span className="material-symbols-outlined">resume</span>)}
+                (<span className="material-symbols-outlined" onClick={startTimer} >resume</span>)}
             </button>
         </div>
     )

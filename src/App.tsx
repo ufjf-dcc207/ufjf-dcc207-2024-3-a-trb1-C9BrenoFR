@@ -1,10 +1,11 @@
 import './App.css'
+import Clock from './Clock'
 
 function App() {
 
   return (
     <>
-      <h1>Hello World</h1>
+      <Clock reciaveHours={0} reciaveMinutes={1} reciaveSeconds={0}/>
     </>
   )
 }
