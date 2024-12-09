@@ -71,9 +71,10 @@ export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: Cl
     return (
         <div className="clock">
             <div className="clock-display">
-                <p>
-                    {hours < 10 && "0"}{hours} : {minutes < 10 && "0"}{minutes} : {seconds < 10 && "0"}{seconds}
-                </p>
+                {hours !== 0 || minutes !== 0 || seconds !== 0 ? 
+                (<p>{hours < 10 && "0"}{hours} : {minutes < 10 && "0"}{minutes} : {seconds < 10 && "0"}{seconds}</p>) :
+                (<p>Acabou!</p>)    
+            }
             </div>
             <button className="actions">
                 {isRunning ? 
