@@ -1,0 +1,26 @@
+.clock{
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    padding: 20px;
+    border: 0.5px gray solid;
+    border-radius: 15px;
+}
+
+.clock-display{
+    width: 100%;
+}
+
+.actions{
+    border: 1px #f5f5f5 solid;
+    border-radius: 8px;
+    padding: 5px 10px 5px 10px;
+    color: #f5f5f5;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.actions:hover {
+    background-color: #f5f5f5;
+    color: #242424;
+}
