@@ -8,13 +8,17 @@ interface ClockProps {
 }
 
 export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: ClockProps){
+
+    // Validação para valores menor que zero
     if(reciaveHours < 0)
         reciaveHours = 0;
     if(reciaveSeconds < 0)
         reciaveSeconds = 0;
     if(reciaveMinutes < 0)
         reciaveMinutes = 0;
-    
+
+
+    //Auto correção de valores
     if (reciaveSeconds > 59){
         reciaveMinutes+= Math.floor(reciaveSeconds / 60)
         reciaveSeconds = reciaveSeconds % 60
@@ -24,11 +28,13 @@ export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: Cl
         reciaveMinutes = reciaveMinutes % 60
     }
 
+    // useState para controlar as mudanças do cronômetro
     const [hours, setHours] = useState(reciaveHours);
     const [minutes, setMinutes] = useState(reciaveMinutes);
     const [seconds, setSeconds] = useState(reciaveSeconds);
     const [isRunning, setIsRunning] = useState(false);
 
+    // useEffect para atualizar o crônometro 
     useEffect(() => {
         let interval;
         if(isRunning){
@@ -50,6 +56,8 @@ export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: Cl
         return () => clearInterval(interval);
     }, [seconds, minutes, hours, isRunning])
 
+
+    // Funções dos botões
     function startTimer() {
         if(hours !== 0 || minutes !== 0 || seconds !== 0){
             setIsRunning(true);
