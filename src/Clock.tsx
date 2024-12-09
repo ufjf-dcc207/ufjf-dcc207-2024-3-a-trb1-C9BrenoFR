@@ -36,7 +36,7 @@ export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: Cl
 
     // useEffect para atualizar o crônometro 
     useEffect(() => {
-        let interval;
+        let interval: number;
         if(isRunning){
             interval = setInterval(() => {
                 if(seconds > 0){
