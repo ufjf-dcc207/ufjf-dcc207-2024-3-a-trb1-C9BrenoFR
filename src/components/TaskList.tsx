@@ -66,7 +66,12 @@ export default function TaskList({ onTaskCountChange }: TaskListProps) {
             type="text"
             value={novoTitulo}
             onChange={(e) => setNovoTitulo(e.target.value)}
-            placeholder="Nova tarefa..."
+            placeholder="Novo desafio..."
+            onKeyPress={(e) => {
+              if (e.key === 'Enter' && novoTitulo.trim()) {
+                adicionarTask();
+              }
+            }}
           />
           <button onClick={adicionarTask} disabled={!novoTitulo.trim()}>
     	     Adicionar
