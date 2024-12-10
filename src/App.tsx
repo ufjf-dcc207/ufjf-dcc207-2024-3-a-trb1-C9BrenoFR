@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <div className="header">
         <h1>Habits</h1>
-        <span className="items-count">{taskCount} items</span>
+        <span className="items-count">{taskCount} itens</span>
       </div>
       <TaskList onTaskCountChange={setTaskCount} />
     </div>

@@ -9,17 +9,6 @@
     display: grid;
     gap: 20px;
   }
-  
-  .task {
-    background-color: #ffcece;
-    border-radius: 15px;
-    padding: 30px;
-    display: grid;
-    grid-template-rows: auto auto;
-    justify-items: center;
-    gap: 20px;
-    position: relative;
-  }
 
   .adicionar-task {
     display: flex;
@@ -52,14 +41,3 @@
     cursor: not-allowed;
   }
   
-  .task-titulo {
-    font-size: 18px;
-    color: #000;
-    justify-self: start;
-  }
-  
-  .task-actions {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-  }

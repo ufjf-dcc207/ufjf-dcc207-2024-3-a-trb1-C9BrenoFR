@@ -1,45 +1,64 @@
-.task {
+  .task {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-areas: 
+      "titulo delete"
+      "botao .";
     background-color: #ffcece;
     padding: 30px;
     border-radius: 15px;
+    gap: 20px;
     position: relative;
-    min-height: 70px;
   }
-  
+    
   .task-titulo {
+    grid-area: titulo;
     font-size: 18px;
     font-weight: 500;
     color: #000;
-    text-align: center;
-    margin-bottom: 20px;
+    justify-self: start;
   }
   
   .task-actions {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 10px;
+    grid-area: botao;
+    display: flex;
+    gap: 15px;
+    align-items: center;
   }
   
-  .task button {
-    padding: 8px 20px;
+  .btn-comecar, .btn-complete {
     background-color: #e74c3c;
     color: white;
     border: none;
     border-radius: 20px;
+    padding: 8px 25px;
     cursor: pointer;
-  }
-  
-  .task button.deletar {
-    background: none;
-    padding: 8px;
-    color: #e74c3c;
+    font-size: 16px;
+  }  
+
+  .btn-deletar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #e74c3c;
+    border: none;
+    color: #ffffff;
     font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
   }
   
+  .btn-deletar:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+  }
+
   .task.iniciado {
-    border-left: 5px solid #e74c3c;
+    border-left: 5px solid #ff1900;
   }
   
   .task.completo {
