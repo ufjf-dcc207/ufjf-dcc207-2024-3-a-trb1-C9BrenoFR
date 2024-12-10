@@ -1,37 +1,71 @@
 .task-container {
-    display: grid;
+    width: 50%;
+    padding-right: 20px;
+  }
+  
+  .adicionar-task {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+    border-radius: 25px;
+  }
+  
+  .adicionar-task button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .task-list {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 15px;
   }
   
   .task {
+    background-color: #e19d9d;
+    border-radius: 15px;
+    padding: 25px;
     display: grid;
     grid-template-columns: 1fr auto auto;
-    gap: 10px;
-    background-color: #ffcece;
-    padding: 15px;
-    border-radius: 15px;
+    gap: 20px;
+    align-items: center;
   }
   
-  @media (max-width: 600px) {
-    .task {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-    
-    .task-actions {
-      justify-content: center;
-    }
-    
-    .adicionar-task {
-      grid-template-columns: 1fr;
-    }
-    
-    .adicionar-task input,
-    .adicionar-task button {
-      width: 100%;
-    }
+  .task-titulo {
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .task-actions {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .task button.comecar {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 25px;
+    cursor: pointer;
+  }
+  
+  .task button.deletar {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 24px;
+    color: #e74c3c;
+    display: flex;
+    align-items: center;
+  }
+  
+  .task button.deletar::after {
+    content: '🗑️';
   }
