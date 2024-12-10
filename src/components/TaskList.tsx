@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Task from './Task';
 import './TaskList.css';
+
+interface TaskListProps {
+  onTaskCountChange: (count: number) => void;
+}
 
 interface TaskType {
   id: number;
@@ -9,9 +13,13 @@ interface TaskType {
   completo: boolean;
 }
 
-export default function TaskList() {
+export default function TaskList({ onTaskCountChange }: TaskListProps) {
     const [tasks, setTasks] = useState<TaskType[]>([]);
     const [novoTitulo, setNovoTitulo] = useState('');
+
+    useEffect(() => {
+      onTaskCountChange(tasks.length);
+    }, [tasks.length, onTaskCountChange]);
   
     const adicionarTask = () => {
         if (novoTitulo.trim()) {
