@@ -17,7 +17,7 @@ export default function Task({titulo, iniciado, completo, onDelete, onStart, onC
       <div className="task-actions">
         {!completo && !iniciado && <button onClick={onStart}>Iniciar</button>}
         {iniciado && !completo && <button onClick={onComplete}>Completar</button>}
-        <button onClick={onDelete}>Deletar</button>
+        <button onClick={onDelete}>🗑️</button>
       </div>
     </div>
   );
