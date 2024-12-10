@@ -1,0 +1,46 @@
+.task {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 15px;
+    background-color: #ffcece;
+    padding: 20px;
+    border-radius: 15px;
+  }
+  
+  .task-titulo {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .task-actions {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+  }
+  
+  .task button {
+    padding: 8px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .task button.deletar {
+    background: none;
+    padding: 8px;
+    color: #e74c3c;
+    font-size: 20px;
+  }
+  
+  .task.iniciado {
+    border-left: 4px solid #e74c3c;
+  }
+  
+  .task.completo {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+  }
