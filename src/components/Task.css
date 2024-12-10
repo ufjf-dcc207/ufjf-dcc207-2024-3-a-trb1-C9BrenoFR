@@ -1,16 +1,19 @@
 .task {
     display: grid;
-    grid-template-columns: 1fr auto auto;
-    align-items: center;
-    gap: 15px;
+    grid-template-columns: 1fr auto;
     background-color: #ffcece;
-    padding: 20px;
+    padding: 30px;
     border-radius: 15px;
+    position: relative;
+    min-height: 70px;
   }
   
   .task-titulo {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
+    color: #000;
+    text-align: center;
+    margin-bottom: 20px;
   }
   
   .task-actions {
@@ -36,7 +39,7 @@
   }
   
   .task.iniciado {
-    border-left: 4px solid #e74c3c;
+    border-left: 5px solid #e74c3c;
   }
   
   .task.completo {
