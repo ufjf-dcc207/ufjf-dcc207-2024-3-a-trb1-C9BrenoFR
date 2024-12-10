@@ -1,14 +1,17 @@
-body, html {
-  padding: 20px;
+.App {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 20px;
   background-color: #fff;
 }
 
 .header {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 15px;
   align-items: center;
-  gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
   margin-bottom: 30px;
 }
 
