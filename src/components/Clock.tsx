@@ -37,8 +37,6 @@ export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: Cl
 
     // useState para controlar as mudanças do cronômetro
     const [isRunning, setIsRunning] = useState(false);
-    const [globalTime, setGlobalTime] = useState(seconds + minutes*60 + hours*3600);
-    const [textColor, setTextColor] = useState(" ");
 
     // useEffect para atualizar o crônometro 
     useEffect(() => {
@@ -57,17 +55,10 @@ export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: Cl
                 }else{
                     setIsRunning(false);
                 }
-                setGlobalTime((globalTime) => globalTime - 1);
-                if(globalTime <= (reciaveSeconds + reciaveMinutes*60 + reciaveHours*3600)/2)
-                    setTextColor("middle")
-                if(globalTime <= (reciaveSeconds + reciaveMinutes*60 + reciaveHours*3600)/4)
-                    setTextColor("ending")
-
-                
             }, 1000);
         }
         return () => clearInterval(interval);
-    }, [seconds, minutes, hours, isRunning, globalTime, reciaveHours, reciaveMinutes, reciaveSeconds])
+    }, [seconds, minutes, hours, isRunning, reciaveHours, reciaveMinutes, reciaveSeconds])
 
 
     // Funções dos botões
@@ -85,7 +76,7 @@ export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: Cl
         <div className="clock">
             <div className="clock-display">
                 {hours !== 0 || minutes !== 0 || seconds !== 0 ? 
-                (<p className={textColor}>{hours < 10 && "0"}{hours} : {minutes < 10 && "0"}{minutes} : {seconds < 10 && "0"}{seconds}</p>) :
+                (<p>{hours < 10 && "0"}{hours} : {minutes < 10 && "0"}{minutes} : {seconds < 10 && "0"}{seconds}</p>) :
                 (<p>Acabou!</p>)    
             }
             </div>
