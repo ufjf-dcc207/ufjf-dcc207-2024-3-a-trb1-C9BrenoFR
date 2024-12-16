@@ -10,11 +10,19 @@
     gap: 20px;
   }
 
+  .novas-horas{
+    display: flex;
+    flex-direction: row;
+    color: black;
+    align-items: center;
+  }
+
   .adicionar-task {
     display: flex;
+    flex-direction: column;
     gap: 20px;  
     margin-bottom: 40px;
-    align-items: center;
+    justify-content: center;
   }
   
   
@@ -24,6 +32,16 @@
     border-radius: 20px;  
     font-size: 16px;
     width: 200px;
+  }
+
+  .novas-horas .time {
+    padding: 0;
+    border: 1px solid #ddd;
+    border-radius: 20px;  
+    font-size: 16px;
+    width: 40px;
+    height: 30px;
+    text-align: center;
   }
   
   .adicionar-task button {
@@ -41,3 +59,8 @@
     cursor: not-allowed;
   }
   
+.general-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
