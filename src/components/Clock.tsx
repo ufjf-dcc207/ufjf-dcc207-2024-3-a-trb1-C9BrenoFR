@@ -9,31 +9,35 @@ interface ClockProps {
 
 export default function Clock({reciaveHours, reciaveMinutes, reciaveSeconds}: ClockProps){
 
-    // Validação para valores menor que zero
-    if(reciaveHours < 0)
-        reciaveHours = 0;
-    if(reciaveSeconds < 0)
-        reciaveSeconds = 0;
-    if(reciaveMinutes < 0)
-        reciaveMinutes = 0;
-
-
-    //Auto correção de valores
-    if (reciaveSeconds > 59){
-        reciaveMinutes+= Math.floor(reciaveSeconds / 60)
-        reciaveSeconds = reciaveSeconds % 60
-    }
-    if (reciaveMinutes > 59){
-        reciaveHours+= Math.floor(reciaveMinutes / 60)
-        reciaveMinutes = reciaveMinutes % 60
-    }
-
-    // useState para controlar as mudanças do cronômetro
+    //Use State e Use Effect para alteração dinâmica dos valores do relógio
     const [hours, setHours] = useState(reciaveHours);
     const [minutes, setMinutes] = useState(reciaveMinutes);
     const [seconds, setSeconds] = useState(reciaveSeconds);
+
+    useEffect(() => {
+        setHours(reciaveHours);
+        setMinutes(reciaveMinutes);
+        setSeconds(reciaveSeconds);
+    }, [reciaveHours, reciaveMinutes, reciaveSeconds]);
+
+    // Validação para valores menor que zero
+    if (hours < 0) setHours(0);
+    if (seconds < 0) setSeconds(0);
+    if (minutes < 0) setMinutes(0);
+
+    // Auto correção de valores
+    if (seconds > 59) {
+        setMinutes(minutes + Math.floor(seconds / 60));
+        setSeconds(seconds % 60);
+    }
+    if (minutes > 59) {
+        setHours(hours + Math.floor(minutes / 60));
+        setMinutes(minutes % 60);
+    }
+
+    // useState para controlar as mudanças do cronômetro
     const [isRunning, setIsRunning] = useState(false);
-    const [globalTime, setGlobalTime] = useState(reciaveSeconds + reciaveMinutes*60 + reciaveHours*3600);
+    const [globalTime, setGlobalTime] = useState(seconds + minutes*60 + hours*3600);
     const [textColor, setTextColor] = useState(" ");
 
     // useEffect para atualizar o crônometro 
