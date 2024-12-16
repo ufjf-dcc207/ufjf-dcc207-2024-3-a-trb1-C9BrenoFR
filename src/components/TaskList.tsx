@@ -4,11 +4,12 @@ import './TaskList.css';
 import Clock from './Clock';
 
 interface TaskListProps {
-  onTaskCountChange: (count: number) => void;
+  onTaskCountChange: (count: number) => void;//funcao callback para atualizar a contagem
 }
 
 interface TaskType {
-  id: number;
+  
+  id: number; //toda tarefa vai ter um id oculto para ajudar na manipulacao
   titulo: string;
   iniciado: boolean;
   completo: boolean;
@@ -27,10 +28,11 @@ export default function TaskList({ onTaskCountChange }: TaskListProps) {
     const [sendMinutes, setSendMinutes] = useState(0);
     const [sendHours, setSendHours] = useState(0);
 
+    //O useEffect é utilizado para atualizar a contagem de tarefas sempre que o array tasks é modificado
     useEffect(() => {
       onTaskCountChange(tasks.length);
     }, [tasks.length, onTaskCountChange]);
-  
+    //vai adicionar uma nova task, comecando pelo titulo
     const adicionarTask = () => {
         if (novoTitulo.trim()) {
           if (tasks.some(task => task.titulo.toLowerCase() === novoTitulo.toLowerCase())) {
@@ -50,7 +52,7 @@ export default function TaskList({ onTaskCountChange }: TaskListProps) {
       setNovoTitulo('');
     }
   };
-    // Função para deletar uma tarefa pelo ID
+    // Função para deletar uma tarefa pelo ID (por isso nao pode ter task repetida)
     const deletarTask = (id: number) => {
       setTasks(tasks.filter(task => task.id !== id));
       setSendHours(0);
@@ -67,10 +69,12 @@ export default function TaskList({ onTaskCountChange }: TaskListProps) {
       setSendHours(hours);
     }
 
+    // Efeito para logar mudanças nos minutos enviados
     useEffect(() => {
       console.log(sendMinutes);
     }, [sendMinutes]);
 
+    // Função para completar uma tarefa
     const completarTask = (id: number) => {
         // Primeiro marca como completo e depois remove após um delay
         setTasks(tasks.map(task =>
